@@ -1,0 +1,101 @@
+[
+{
+"id": "1",
+"taiKhoan": "jroberts",
+"hoTen": "July Roberts",
+"matKhau": "123456",
+"email": "jroberts@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "ITALIAN",
+"moTa": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+"hinhAnh": "teacher_1.jpg"
+},
+{
+"id": "2",
+"taiKhoan": "jstone",
+"hoTen": "Jon Stone",
+"matKhau": "123456",
+"email": "jstone@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "FRENCH",
+"moTa": "Nanotechnology immersion along the information.",
+"hinhAnh": "teacher_2.jpg"
+},
+{
+"id": "3",
+"taiKhoan": "ntran",
+"hoTen": "Nguyen Tran",
+"matKhau": "123456",
+"email": "ntran@gmail.com",
+"loaiND": "HV",
+"ngonNgu": "JAPANESE",
+"moTa": "Nanotechnology immersion along the information.",
+"hinhAnh": "teacher_2.jpg"
+},
+{
+"id": "4",
+"taiKhoan": "estone",
+"hoTen": "Emma Stone",
+"matKhau": "123456",
+"email": "estone@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "JAPANESE",
+"moTa": "Bring to the table win-win survival strategies to ensure.",
+"hinhAnh": "teacher_3.jpg"
+},
+{
+"id": "5",
+"taiKhoan": "mlee",
+"hoTen": "Mark Lee",
+"matKhau": "123456",
+"email": "mlee@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "CHINESE",
+"moTa": "Proactive domination. At the end of the day, going forward.",
+"hinhAnh": "teacher_4.jpg"
+},
+{
+"id": "6",
+"taiKhoan": "jdoe",
+"hoTen": "John Doe",
+"matKhau": "123456",
+"email": "jdoe@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "RUSSIAN",
+"moTa": "A new normal that has evolved from generation X.",
+"hinhAnh": "teacher_5.jpg"
+},
+{
+"id": "7",
+"taiKhoan": "jsmith",
+"hoTen": "Jane Smith",
+"matKhau": "123456",
+"email": "jsmith@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "SWEDEN",
+"moTa": "Heading towards a streamlined cloud solution.",
+"hinhAnh": "teacher_6.jpg"
+},
+{
+"id": "8",
+"taiKhoan": "halverez",
+"hoTen": "Hanna Alverez",
+"matKhau": "123456",
+"email": "halverez@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "SPANISH",
+"moTa": "Content in real-time will have multiple touchpoints.",
+"hinhAnh": "teacher_7.jpg"
+},
+{
+"id": "9",
+"taiKhoan": "jroberts",
+"hoTen": "July Roberts",
+"matKhau": "123456",
+"email": "jroberts@gmail.com",
+"loaiND": "GV",
+"ngonNgu": "ITALIAN",
+"moTa": "Capitalize on low hanging fruit to identify a ballpark.",
+"hinhAnh": "teacher_8.jpg"
+}
+]
