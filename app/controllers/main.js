@@ -1,4 +1,5 @@
 var nguoiDungServices = new NguoiDungServices();
+var validator = new Validator();
 
 function getEle(id) {
     return document.getElementById(id);
@@ -69,6 +70,14 @@ var capNhatNguoiDung = function (id) {
     var loaiND = getEle('loaiNguoiDung').value;
     var loaiNN = getEle('loaiNgonNgu').value;
     var moTa = getEle('MoTa').value;
+
+    // Validation
+    var isValid = true;
+    var isValid = validation(isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa);
+    if (!isValid) {
+        return;
+    }
+
     var nd = new NguoiDung(taiKhoan, hoTen, matKhau, email, loaiND, loaiNN, moTa, hinhAnh);
     nguoiDungServices
         .capNhatND(id, nd)
@@ -108,7 +117,7 @@ function renderTable(mangNguoiDung) {
 }
 
 // Thêm người dùng
-var themNguoiDung = function () {
+var btnThemNguoiDung = function () {
     var footer = '';
     footer += `
         <button class="btn btn-success" id="btnThem">Thêm</button>
@@ -136,7 +145,11 @@ function themUser() {
     var moTa = getEle('MoTa').value;
 
     // Validation 
-    validation(taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa);
+    var isValid = true;
+    var isValid = validation(isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa);
+    if (!isValid) {
+        return;
+    }
 
     var nguoiDung = new NguoiDung(taiKhoan, hoTen, matKhau, email, loaiND, loaiNN, moTa, hinhAnh, moTa);
     nguoiDungServices
@@ -153,9 +166,30 @@ function themUser() {
     document.querySelectorAll('.form-group').reset();
 }
 
-var validation = function (taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa) {
-
+// Validation form
+var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa) {
+    // Tài khoản 
+    isValid &= validator.kiemTraRong(taiKhoan, 'tbTK', '(*) Tài khoản không được để trống');
+    // Chưa làm trùng nhau
+    isValid &= validator.kiemTraRong(hoTen, 'tbHT', '(*) Họ tên không được để trống')
+        && validator.kiemTraHoTen(hoTen, 'tbHT', '(*) Họ tên không được chứa số và ký tự đặt biệt');
+    isValid &= validator.kiemTraRong(matKhau, 'tbMK', '(*) Mật khẩu không được để trống')
+        && validator.kiemTraDoDai(matKhau, 'tbMK', '(*) Mật khẩu có độ dài từ 6 - 8 ký tự', 6, 8)
+        && validator.kiemTraMatKhau(matKhau, 'tbMK', '(*) Mật khẩu phải bao gồm 1 ký tự hoa, 1 ký tự đặt biệt, 1 ký tự số');
+    isValid &= validator.kiemTraRong(email, 'tbEmail', '(*) Email không được để trống')
+        && validator.kiemtraEmail(email, 'tbEmail', '(*) Email không đúng định dạng, vui lòng nhập lại');
+    isValid &= validator.kiemTraRong(hinhAnh, 'tbHA', '(*) Hình ảnh không được để trống');
+    isValid &= validator.kiemTraRong(loaiND, 'tbLND', '(*) Bạn phải chọn loại người dùng');
+    isValid &= validator.kiemTraRong(loaiNN, 'tbLNN', '(*) Bạn phải chọn loại ngôn ngữ');
+    isValid &= validator.kiemTraRong(moTa, 'tbMT', '(*) Bạn không được để trống phần này')
+        && validator.kiemTraDoDai(moTa, 'tbMT', '(*) Độ dài không vượt quá 60 ký tự', 0, 60);
+    if (!isValid) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 // Xử lí sự kiện nút thêm người dùng
-getEle('btnThemNguoiDung').addEventListener('click', themNguoiDung)
+getEle('btnThemNguoiDung').addEventListener('click', btnThemNguoiDung)

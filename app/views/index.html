@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Quản lý người dùng</title>
+    <link rel="stylesheet" href="../../assets/css/index.css" />
+    k
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -181,6 +183,7 @@
                   class="form-control"
                   placeholder="Nhập vào tài khoản"
                 />
+                <span class="validator" id="tbTK"></span>
               </div>
               <div class="form-group">
                 <label>Họ tên</label>
@@ -189,6 +192,7 @@
                   class="form-control"
                   placeholder="Nhập vào họ tên"
                 />
+                <span class="validator" id="tbHT"></span>
               </div>
               <div class="form-group">
                 <label>Mật khẩu</label>
@@ -198,6 +202,7 @@
                   placeholder="Nhập vào mật khẩu"
                   type="password"
                 />
+                <span class="validator" id="tbMK"></span>
               </div>
               <div class="form-group">
                 <label>Email</label>
@@ -206,6 +211,7 @@
                   class="form-control"
                   placeholder="Nhập vào Email"
                 />
+                <span class="validator" id="tbEmail"></span>
               </div>
               <div class="form-group">
                 <label>Hình Ảnh</label>
@@ -214,19 +220,23 @@
                   class="form-control"
                   placeholder="Nhập vào hình ảnh"
                 />
+                <span class="validator" id="tbHA"></span>
               </div>
               <div class="form-group">
                 <label for="">Loại Người Dùng: </label>
                 <select class="form-control" id="loaiNguoiDung">
-                  <option>Chọn loại người dùng</option>
+                  <option style="display: none" value="">
+                    Chọn loại người dùng
+                  </option>
                   <option value="GV">Giáo viên</option>
                   <option value="HV">Học viên</option>
                 </select>
+                <span class="validator" id="tbLND"></span>
               </div>
               <div class="form-group">
                 <label for="">Loại Ngôn Ngữ: </label>
                 <select class="form-control" id="loaiNgonNgu">
-                  <option>Chọn ngôn ngữ</option>
+                  <option style="display: none" value="">Chọn ngôn ngữ</option>
                   <option value="ITALIAN">ITALIAN</option>
                   <option value="FRENCH">FRENCH</option>
                   <option value="JAPANESE">JAPANESE</option>
@@ -235,6 +245,7 @@
                   <option value="SWEDEN">SWEDEN</option>
                   <option value="SPANISH">SPANISH</option>
                 </select>
+                <span class="validator" id="tbLNN"></span>
               </div>
               <div class="form-group">
                 <label>Mô tả</label>
@@ -244,6 +255,7 @@
                   class="form-control"
                   placeholder="Nhập vào mô tả"
                 ></textarea>
+                <span class="validator" id="tbMT"></span>
               </div>
             </div>
             <!-- Modal footer -->
@@ -282,6 +294,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../models/NguoiDung.js"></script>
     <script src="../services/NguoiDungService.js"></script>
+    <script src="../models/Validator.js"></script>
     <script src="../controllers/main.js"></script>
   </body>
 </html>
