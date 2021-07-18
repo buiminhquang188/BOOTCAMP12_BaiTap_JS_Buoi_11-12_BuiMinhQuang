@@ -96,7 +96,7 @@ var capNhatNguoiDung = function (id) {
 // In bảng hiển thị danh sách người dùng
 function renderTable(mangNguoiDung) {
     var content = '';
-    // Đặt stt = 1 để tránh những trường hợp đọc bỏ qua loại Học Viên
+    // Đặt stt = 1 để tránh những trường hợp đọc id từ database bỏ qua loại Học Viên
     var stt = 1;
     mangNguoiDung.map(function (user, index) {
         // Kiểm tra loại người dùng có là HV không, nếu có thì dừng chương trình.
@@ -111,7 +111,7 @@ function renderTable(mangNguoiDung) {
                 <td>${user.hoTen}</td>
                 <td>${user.email}</td>
                 <td>${user.ngonNgu}</td>
-                <td>${user.loaiND}</td>
+                <td>${user.loaiND === 'GV' ? 'Giáo Viên' : 'Lỗi'}</td>
                 <td>
                 <button class="btn btn-danger" onclick="xoaNguoiDung(${user.id})">Xoá</button>
                 <button class="btn btn-success" onclick="xemNguoiDung(${user.id})">Xem</button>
@@ -175,9 +175,11 @@ function themUser() {
 
 // Validation form
 var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa) {
+    var mangND = getLocalStorage();
+    console.log(mangND);
     // Tài khoản 
-    isValid &= validator.kiemTraRong(taiKhoan, 'tbTK', '(*) Tài khoản không được để trống');
-    // Chưa làm trùng nhau
+    isValid &= validator.kiemTraRong(taiKhoan, 'tbTK', '(*) Tài khoản không được để trống')
+        && validator.kiemTraTrung(taiKhoan, 'tbTK', '(*) Tài khoản của bạn đã bị trùng, vui lòng nhập tài khoản khác', mangND);
     isValid &= validator.kiemTraRong(hoTen, 'tbHT', '(*) Họ tên không được để trống')
         && validator.kiemTraHoTen(hoTen, 'tbHT', '(*) Họ tên không được chứa số và ký tự đặt biệt');
     isValid &= validator.kiemTraRong(matKhau, 'tbMK', '(*) Mật khẩu không được để trống')
@@ -198,6 +200,7 @@ var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, lo
     }
 }
 
+
 // Xử lí sự kiện nút thêm người dùng
 getEle('btnThemNguoiDung').addEventListener('click', btnThemNguoiDung)
 
@@ -205,7 +208,7 @@ function setLocalStorage(dsnd) {
     localStorage.setItem('DSND', JSON.stringify(dsnd));
 }
 
-function getLocalStorage(dsnd) {
+function getLocalStorage() {
     if (localStorage.getItem('DSND')) {
         return JSON.parse(localStorage.getItem('DSND'));
     }

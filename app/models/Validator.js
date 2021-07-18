@@ -11,6 +11,23 @@ function Validator() {
             return true;
         }
     }
+    this.kiemTraTrung = function (value, showPlace, mess, dsnd) {
+        debugger
+        for (var i = 0; i < dsnd.length; i++) {
+            if (value === dsnd[i].taiKhoan) {
+                getEle(showPlace).style.display = 'block';
+                getEle(showPlace).innerHTML = mess;
+                return false;
+            }
+            else {
+                getEle(showPlace).style.display = 'none';
+                getEle(showPlace).innerHTML = '';
+                if (i == dsnd.length) {
+                    return true;
+                }
+            }
+        }
+    }
     this.kiemTraHoTen = function (value, showPlace, mess) {
         var patternFullName = new RegExp("^[a-zA-Z ]+$");
         if (patternFullName.test(value)) {
