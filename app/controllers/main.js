@@ -11,6 +11,7 @@ var layDanhSachNguoiDung = function () {
         .layDSND()
         .then(function (result) {
             renderTable(result.data);
+            setLocalStorage(result.data);
         }).catch(function (error) {
             console.log(error);
         })
@@ -95,11 +96,16 @@ var capNhatNguoiDung = function (id) {
 // In bảng hiển thị danh sách người dùng
 function renderTable(mangNguoiDung) {
     var content = '';
+    // Đặt stt = 1 để tránh những trường hợp đọc bỏ qua loại Học Viên
+    var stt = 1;
     mangNguoiDung.map(function (user, index) {
-        // Chỉ hiển thị giáo viên không hiển thị học viên --> Chưa làm
+        // Kiểm tra loại người dùng có là HV không, nếu có thì dừng chương trình.
+        if (user.loaiND == 'HV') {
+            return;
+        }
         content += `
             <tr>
-                <td>${user.id}</td>
+                <td>${stt}</td>
                 <td>${user.taiKhoan}</td>
                 <td>${user.matKhau}</td>
                 <td>${user.hoTen}</td>
@@ -112,6 +118,7 @@ function renderTable(mangNguoiDung) {
                 </td>
             </tr>
         `
+        stt++;
     })
     getEle('tblDanhSachNguoiDung').innerHTML = content;
 }
@@ -193,3 +200,13 @@ var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, lo
 
 // Xử lí sự kiện nút thêm người dùng
 getEle('btnThemNguoiDung').addEventListener('click', btnThemNguoiDung)
+
+function setLocalStorage(dsnd) {
+    localStorage.setItem('DSND', JSON.stringify(dsnd));
+}
+
+function getLocalStorage(dsnd) {
+    if (localStorage.getItem('DSND')) {
+        return JSON.parse(localStorage.getItem('DSND'));
+    }
+}
