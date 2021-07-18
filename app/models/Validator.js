@@ -20,9 +20,9 @@ function Validator() {
                 return false;
             }
             else {
-                getEle(showPlace).style.display = 'none';
-                getEle(showPlace).innerHTML = '';
                 if (i == dsnd.length) {
+                    getEle(showPlace).style.display = 'none';
+                    getEle(showPlace).innerHTML = '';
                     return true;
                 }
             }
