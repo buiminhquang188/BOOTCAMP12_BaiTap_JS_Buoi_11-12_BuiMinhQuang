@@ -100,9 +100,6 @@ function renderTable(mangNguoiDung) {
     var stt = 1;
     mangNguoiDung.map(function (user, index) {
         // Kiểm tra loại người dùng có là HV không, nếu có thì dừng chương trình.
-        if (user.loaiND == 'HV') {
-            return;
-        }
         content += `
             <tr>
                 <td>${stt}</td>
@@ -111,7 +108,7 @@ function renderTable(mangNguoiDung) {
                 <td>${user.hoTen}</td>
                 <td>${user.email}</td>
                 <td>${user.ngonNgu}</td>
-                <td>${user.loaiND === 'GV' ? 'Giáo Viên' : 'Lỗi'}</td>
+                <td>${user.loaiND === 'GV' ? 'Giáo Viên' : 'Học Viên'}</td>
                 <td>
                 <button class="btn btn-danger" onclick="xoaNguoiDung(${user.id})">Xoá</button>
                 <button class="btn btn-success" onclick="xemNguoiDung(${user.id})">Xem</button>
