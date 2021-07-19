@@ -9,42 +9,45 @@
     z-index: -1;
   }
   .carousel__content {
-    .carousel__items:hover {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    }
-    .carousel__items {
-      margin: 0 20px;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 1);
-      text-align: center;
-      z-index: 10;
-      transition: all ease 650ms;
-      .carousel__text {
-        .carousel__img {
-          overflow: hidden;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          img {
-            transform: scale3d(1, 1, 1);
-            transition: transform ease-in-out 650ms;
+    .carousel__col {
+      z-index: 1;
+      .carousel__items:hover {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+      }
+      .carousel__items {
+        margin: 0 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 1);
+        text-align: center;
+        z-index: 10;
+        transition: all ease 650ms;
+        .carousel__text {
+          .carousel__img {
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            img {
+              transform: scale3d(1, 1, 1);
+              transition: transform ease-in-out 650ms;
+            }
+            img:hover {
+              transform: scale3d(1.1, 1.1, 1.1);
+            }
           }
-          img:hover {
-            transform: scale3d(1.1, 1.1, 1.1);
+          p:first-of-type {
+            padding-top: 20px;
+            @include styleText(11px, $fw-2, $color-purple);
+            margin-bottom: 0.7em;
           }
-        }
-        p:first-of-type {
-          padding-top: 20px;
-          @include styleText(11px, $fw-2, $color-purple);
-          margin-bottom: 0.7em;
-        }
-        h2 {
-          @include styleText($fs-4, $fw-2, $color-black);
-        }
-        p:last-of-type {
-          font-family: "Roboto";
-          @include styleText($fs-basic, $fw-1, $color-black);
-          line-height: 25px;
+          .h2 {
+            @include styleText($fs-4, $fw-2, $color-black);
+          }
+          p:last-of-type {
+            font-family: "Roboto";
+            @include styleText($fs-basic, $fw-1, $color-black);
+            line-height: 25px;
+          }
         }
       }
     }

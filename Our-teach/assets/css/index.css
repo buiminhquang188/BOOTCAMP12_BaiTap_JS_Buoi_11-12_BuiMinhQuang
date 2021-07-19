@@ -190,12 +190,16 @@ header .header__container .header__social .header__tel a:hover {
   z-index: -1;
 }
 
-.carousel .carousel__content .carousel__items:hover {
+.carousel .carousel__content .carousel__col {
+  z-index: 1;
+}
+
+.carousel .carousel__content .carousel__col .carousel__items:hover {
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.carousel .carousel__content .carousel__items {
+.carousel .carousel__content .carousel__col .carousel__items {
   margin: 0 20px;
   border-radius: 10px;
   background-color: white;
@@ -205,13 +209,13 @@ header .header__container .header__social .header__tel a:hover {
   transition: all ease 650ms;
 }
 
-.carousel .carousel__content .carousel__items .carousel__text .carousel__img {
+.carousel .carousel__content .carousel__col .carousel__items .carousel__text .carousel__img {
   overflow: hidden;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.carousel .carousel__content .carousel__items .carousel__text .carousel__img img {
+.carousel .carousel__content .carousel__col .carousel__items .carousel__text .carousel__img img {
   -webkit-transform: scale3d(1, 1, 1);
           transform: scale3d(1, 1, 1);
   -webkit-transition: -webkit-transform ease-in-out 650ms;
@@ -220,12 +224,12 @@ header .header__container .header__social .header__tel a:hover {
   transition: transform ease-in-out 650ms, -webkit-transform ease-in-out 650ms;
 }
 
-.carousel .carousel__content .carousel__items .carousel__text .carousel__img img:hover {
+.carousel .carousel__content .carousel__col .carousel__items .carousel__text .carousel__img img:hover {
   -webkit-transform: scale3d(1.1, 1.1, 1.1);
           transform: scale3d(1.1, 1.1, 1.1);
 }
 
-.carousel .carousel__content .carousel__items .carousel__text p:first-of-type {
+.carousel .carousel__content .carousel__col .carousel__items .carousel__text p:first-of-type {
   padding-top: 20px;
   font-size: 11px;
   font-weight: 600;
@@ -233,13 +237,13 @@ header .header__container .header__social .header__tel a:hover {
   margin-bottom: 0.7em;
 }
 
-.carousel .carousel__content .carousel__items .carousel__text h2 {
+.carousel .carousel__content .carousel__col .carousel__items .carousel__text .h2 {
   font-size: 1.5em;
   font-weight: 600;
   color: #181818;
 }
 
-.carousel .carousel__content .carousel__items .carousel__text p:last-of-type {
+.carousel .carousel__content .carousel__col .carousel__items .carousel__text p:last-of-type {
   font-family: "Roboto";
   font-size: 15px;
   font-weight: 400;

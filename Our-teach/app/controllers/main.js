@@ -25,18 +25,20 @@ function renderTeacher(mangGiaoVien) {
             return;
         }
         content += `
-            <div class="carousel__items" style="width: 20%; margin-bottom: 2em">
+        <div class="carousel__col col-3">
+            <div class="carousel__items" style="margin-bottom: 2em">
                 <div class="carousel__text">
                     <div class="carousel__img">
                         <img src="../../assets/images/${teacher.hinhAnh}" class="img-fluid" />
                     </div>
                     <p>${teacher.ngonNgu}</p>
-                    <h2>${teacher.hoTen}</h2>
+                    <p class="h2">${teacher.hoTen}</p>
                     <p class="py-3 px-4">
                       ${teacher.moTa}
                     </p>
                 </div>
             </div>
+        </div>
         `;
     })
     getEle('dflexTeacher').innerHTML = content;
