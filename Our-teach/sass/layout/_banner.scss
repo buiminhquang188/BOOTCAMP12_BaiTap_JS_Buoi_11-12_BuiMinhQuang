@@ -1,0 +1,54 @@
+.banner {
+  position: relative;
+  .banner__top {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    z-index: -1;
+  }
+  .banner__content {
+    position: relative;
+    .banner__items {
+      .banner__text {
+        p {
+          @include styleText($fs-7, $fw-2, $color-purple);
+        }
+        h1 {
+          @include styleText($fs-1, $fw-3, $color-black);
+        }
+      }
+      .banner__img {
+        width: 580px;
+        height: 580px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .banner__bottom{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+}
+
+@include responsive("extra-large") {
+  .banner {
+    width: 100% !important;
+    .banner__items {
+      flex-direction: column !important;
+    }
+  }
+}
+
+@include responsive("large") {
+}
+
+@include responsive("medium") {
+}
+
+@include responsive("small") {
+}

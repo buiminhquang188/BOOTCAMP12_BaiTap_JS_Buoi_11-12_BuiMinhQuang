@@ -1,0 +1,94 @@
+header {
+  /* animation magic */
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  width: 100%;
+  background: transparent;
+  z-index: 9999;
+  position: fixed;
+  .header__container {
+    a {
+      color: $color-black;
+      transition: all ease 350ms;
+    }
+    a:hover {
+      color: $color-purple;
+    }
+    .header__navbar {
+      width: 50%;
+      padding-left: $pd-1;
+      ul li {
+        padding: 0 8px;
+        @include styleText($fs-6, $fw-2, $color-black);
+        position: relative;
+        a:hover::after {
+          content: "\2022";
+          font-size: 30px;
+          transition: font-size ease 350ms;
+        }
+        .active::after {
+          content: "\2022";
+          font-size: 15px;
+          transition: font-size ease 350ms;
+        }
+        a:after {
+          content: "";
+          color: $color-purple;
+          position: absolute;
+          bottom: -70%;
+          right: 45%;
+          font-size: 15px;
+        }
+      }
+    }
+    .header__social {
+      .header__tel {
+        margin-right: 20px;
+        a {
+          @include styleButton($color-purple, 5px, 15px, $br-1);
+          color: $color-button;
+          border: 1px solid $color-purple;
+          transition: all ease 350ms;
+          i {
+            padding-right: 5px;
+          }
+        }
+        a:hover {
+          box-shadow: 0 0 0 2em inset $color-white;
+          color: $color-purple;
+        }
+      }
+    }
+  }
+}
+.shrink {
+  height: $pd-5;
+  background-color: $color-white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  .header__container {
+    img {
+      visibility: hidden;
+    }
+    .header__navbar,
+    .header__social {
+      padding-bottom: $pd-5;
+    }
+  }
+}
+
+@include responsive("extra-large") {
+  header {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 10px 0;
+    position: relative;
+    display: block;
+    background-color: $color-white;
+    button{
+      outline: none;
+    }
+  }
+}
+

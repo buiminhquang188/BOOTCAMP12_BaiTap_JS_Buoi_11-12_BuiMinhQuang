@@ -1,0 +1,37 @@
+@mixin styleText($fs, $fw, $color) {
+  font-size: $fs;
+  font-weight: $fw;
+  color: $color;
+}
+
+@mixin styleButton($bg, $py, $px, $br) {
+  background: $bg;
+  padding: $py $px;
+  border-radius: $br;
+}
+
+@mixin styleHoverButton($bg, $bg-color, $color, $bd-color) {
+  background: $bg;
+  background-color: $bg-color;
+  color: $color;
+  border-color: $bd-color;
+}
+
+@mixin responsive($screen) {
+  // map-has-key: kiểm tra giá trị có trong map không
+  // map: là tham số, truyền vào biến $breakpoint
+  @if (map-has-key($map: $breakpoints, $key: $screen)) {
+    // map-get: trả ra value -> tức là cái screen
+    // phải tạo biến để hứng cái screen này.
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $screen,
+    );
+    @media screen and (max-width: $value) {
+      // Những code nào năm trong đây sẽ được thực thi
+      @content;
+    }
+  } @else {
+    @error 'Screen does not exists!';
+  }
+}

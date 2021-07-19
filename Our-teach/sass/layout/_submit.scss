@@ -1,0 +1,125 @@
+.submit {
+  padding-top: $pd-5;
+  position: relative;
+  .submit__content {
+    width: 60%;
+    .submit__img {
+      z-index: 1;
+    }
+    .submit__form {
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 30px 30px -10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0 25px;
+      z-index: 1;
+      height: 100%;
+      .submit__text {
+        padding: 0 20px;
+        i {
+          padding: 10px;
+          line-height: 19px;
+          color: $color-purple;
+          text-align: center;
+          position: absolute;
+        }
+        h1 {
+          text-align: center;
+          @include styleText(38px, $fw-3, $color-black);
+        }
+        .submit__center {
+          position: relative;
+          .submit__select {
+            select {
+              padding: 0 $pd-4;
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 50px;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              text-indent: 1px;
+              text-overflow: "";
+              background: none;
+            }
+          }
+          .submit__select::after {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid $color-purple;
+            position: absolute;
+            top: 60%;
+            right: 15px;
+            content: "";
+            z-index: 98;
+          }
+        }
+        .submit__top,
+        .submit__center,
+        .submit__bottom {
+          input,
+          textarea {
+            padding: 0 $pd-4;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+          }
+        }
+        .submit__bottom {
+          i {
+            padding: 10px 12px;
+            line-height: 19px;
+          }
+          textarea {
+            border-radius: 20px;
+            padding: 6px 35px;
+          }
+        }
+        .submit__button {
+          button {
+            border-radius: 50px;
+            background-color: $color-purple;
+            border: 1px solid $color-purple;
+            color: $color-button;
+            font-weight: $fw-2;
+            transition: all ease 300ms;
+          }
+          button:hover {
+            color: $color-purple;
+            background: $color-button;
+            box-shadow: inset 0 0 0 2em $color-white;
+          }
+        }
+      }
+    }
+  }
+  .submit__wavebottom {
+    position: absolute;
+    left: -20px;
+    bottom: 0;
+  }
+}
+
+@include responsive("extra-large") {
+  .submit {
+    .submit__content {
+      width: 100% !important;
+      display: flex !important;
+    }
+  }
+}
+
+@include responsive("large") {
+  .submit {
+    .submit__content {
+      display: flex !important;
+      flex-direction: column;
+      flex-wrap: wrap !important;
+    }
+  }
+}
+
+@include responsive("medium") {
+}
+
+@include responsive("small") {
+}

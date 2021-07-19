@@ -1,0 +1,111 @@
+footer {
+  padding-bottom: 8em;
+  position: relative;
+  .footer__background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  .footer__content {
+    ul {
+      li {
+        font-family: "Roboto", sans-serif;
+        list-style: none;
+        @include styleText($fs-basic, $fw-1, $color-white);
+        padding: 5px 0;
+        a {
+          text-decoration: none;
+          @include styleText($fs-basic, $fw-1, $color-white);
+          opacity: 1;
+          transition: all ease 350ms;
+        }
+        a:hover {
+          opacity: 0.8;
+        }
+        i {
+          padding: 0 5px;
+        }
+      }
+    }
+    h2 {
+      @include styleText($fs-4, $fw-3, $color-white);
+      padding: $pd-4 0;
+    }
+    .footer__links,
+    .footer__about {
+      ul li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+      }
+    }
+    .footer__bottom {
+      li {
+        display: inline;
+      }
+      a {
+        transition: all ease 0.5s;
+      }
+      a:hover {
+        color: $color-black;
+      }
+    }
+    .footer__form {
+      input {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: transparent;
+        border-radius: 50px;
+        text-align: center;
+        font-size: $fs-6;
+        transition: all ease 300ms;
+      }
+      input:focus {
+        border: 1px solid $color-white;
+      }
+      .form-control:focus {
+        box-shadow: none;
+      }
+      .form-group {
+        input::placeholder {
+          color: $color-white;
+        }
+        input:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: $color-white;
+        }
+        input::-ms-input-placeholder {
+          /* Microsoft Edge */
+          color: $color-white;
+        }
+      }
+      button {
+        width: 100%;
+        border-radius: 50px;
+        font-weight: $fw-2;
+        font-size: $fs-6;
+        transition: all ease-in-out 300ms;
+      }
+      button:hover {
+        box-shadow: 0 0 0 2em $color-purple inset;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@include responsive("extra-large") {
+  footer {
+    .footer__content {
+      width: 100% !important;
+    }
+  }
+}
+
+@include responsive("large") {
+}
+
+@include responsive("medium") {
+}
+
+@include responsive("small") {
+}
