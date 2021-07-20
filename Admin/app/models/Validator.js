@@ -11,19 +11,36 @@ function Validator() {
             return true;
         }
     }
-    this.kiemTraTrung = function (value, showPlace, mess, dsnd) {
-        debugger
-        for (var i = 0; i < dsnd.length; i++) {
-            if (value === dsnd[i].taiKhoan) {
-                getEle(showPlace).style.display = 'block';
-                getEle(showPlace).innerHTML = mess;
-                return false;
+    this.kiemTraTrung = function (value, showPlace, mess, dsnd, taiKhoanChuaCapNhat, mode) {
+        if (mode == 1) {
+            for (var i = 0; i < dsnd.length; i++) {
+                if (value === dsnd[i].taiKhoan) {
+                    getEle(showPlace).style.display = 'block';
+                    getEle(showPlace).innerHTML = mess;
+                    return false;
+                }
+                else {
+                    getEle(showPlace).style.display = 'none';
+                    getEle(showPlace).innerHTML = '';
+                    if (i == (dsnd.length - 1)) {
+                        return true;
+                    }
+                }
             }
-            else {
-                getEle(showPlace).style.display = 'none';
-                getEle(showPlace).innerHTML = '';
-                if (i == (dsnd.length - 1)) {
-                    return true;
+        }
+        else {
+            for (var i = 0; i < dsnd.length; i++) {
+                if (value === dsnd[i].taiKhoan && value != taiKhoanChuaCapNhat) {
+                    getEle(showPlace).style.display = 'block';
+                    getEle(showPlace).innerHTML = mess;
+                    return false;
+                }
+                else {
+                    getEle(showPlace).style.display = 'none';
+                    getEle(showPlace).innerHTML = '';
+                    if (i == (dsnd.length - 1)) {
+                        return true;
+                    }
                 }
             }
         }

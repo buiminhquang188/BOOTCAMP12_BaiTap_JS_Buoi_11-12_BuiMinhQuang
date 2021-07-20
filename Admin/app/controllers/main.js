@@ -48,11 +48,11 @@ var xemNguoiDung = function (id) {
             getEle('loaiNguoiDung').value = nd.loaiND;
             getEle('loaiNgonNgu').value = nd.ngonNgu;
             getEle('MoTa').value = nd.moTa;
-
             getEle('btnThem').style.display = 'none';
+            var tempUser = nd.taiKhoan;
             var modalFooter = document.querySelector('.modal-footer');
             modalFooter.innerHTML = `
-            <button class="btn btn-success" onclick="capNhatNguoiDung('${nd.id}')">Cập nhật</button>
+            <button class="btn btn-success" onclick="capNhatNguoiDung('${nd.id}','${tempUser}')">Cập nhật</button>
             <button class="btn btn-danger" id="btnDong" onclick="dongForm()">Đóng</button>
             `;
 
@@ -62,7 +62,7 @@ var xemNguoiDung = function (id) {
         })
 }
 
-var capNhatNguoiDung = function (id) {
+var capNhatNguoiDung = function (id, taiKhoanChuaCapNhat) {
     var taiKhoan = getEle('TaiKhoan').value;
     var hoTen = getEle('HoTen').value;
     var matKhau = getEle('MatKhau').value;
@@ -71,10 +71,10 @@ var capNhatNguoiDung = function (id) {
     var loaiND = getEle('loaiNguoiDung').value;
     var loaiNN = getEle('loaiNgonNgu').value;
     var moTa = getEle('MoTa').value;
-
+    var capNhatUser = 2;
     // Validation
     var isValid = true;
-    var isValid = validation(isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa);
+    var isValid = validation(isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa, taiKhoanChuaCapNhat, capNhatUser);
     if (!isValid) {
         return;
     }
@@ -85,7 +85,6 @@ var capNhatNguoiDung = function (id) {
         .then(function (result) {
             layDanhSachNguoiDung();
             alert('Cập nhật thành công');
-
             dongForm();
         })
         .catch(function (error) {
@@ -135,6 +134,7 @@ var btnThemNguoiDung = function () {
 // Xử lí sự kiện đóng form
 function dongForm() {
     document.getElementById('userForm').reset();
+    deleteMessVal();
     document.querySelector('.close').click();
 }
 
@@ -148,10 +148,11 @@ function themUser() {
     var loaiND = getEle('loaiNguoiDung').value;
     var loaiNN = getEle('loaiNgonNgu').value;
     var moTa = getEle('MoTa').value;
+    var themUser = 1;
 
     // Validation 
     var isValid = true;
-    var isValid = validation(isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa);
+    var isValid = validation(isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa, themUser);
     if (!isValid) {
         return;
     }
@@ -167,14 +168,15 @@ function themUser() {
             alert(error);
         });
 
+    document.getElementById('userForm').reset();
 }
 
 // Validation form
-var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa) {
+var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa, taiKhoanChuaCapNhat, mode) {
     var mangND = getLocalStorage();
     // Tài khoản 
     isValid &= validator.kiemTraRong(taiKhoan, 'tbTK', '(*) Tài khoản không được để trống')
-        && validator.kiemTraTrung(taiKhoan, 'tbTK', '(*) Tài khoản của bạn đã bị trùng, vui lòng nhập tài khoản khác', mangND);
+        && validator.kiemTraTrung(taiKhoan, 'tbTK', '(*) Tài khoản của bạn đã bị trùng, vui lòng nhập tài khoản khác', mangND, taiKhoanChuaCapNhat, mode);
     isValid &= validator.kiemTraRong(hoTen, 'tbHT', '(*) Họ tên không được để trống')
         && validator.kiemTraHoTen(hoTen, 'tbHT', '(*) Họ tên không được chứa số và ký tự đặt biệt');
     isValid &= validator.kiemTraRong(matKhau, 'tbMK', '(*) Mật khẩu không được để trống')
@@ -190,6 +192,25 @@ var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, lo
     return isValid;
 }
 
+// Xoá thông báo Validation
+function deleteMessVal() {
+    getEle('tbTK').style.display = 'none';
+    getEle('tbTK').innerHTML = '';
+    getEle('tbHT').style.display = 'none';
+    getEle('tbHT').innerHTML = '';
+    getEle('tbMK').style.display = 'none';
+    getEle('tbMK').innerHTML = '';
+    getEle('tbEmail').style.display = 'none';
+    getEle('tbEmail').innerHTML = '';
+    getEle('tbHA').style.display = 'none';
+    getEle('tbHA').innerHTML = '';
+    getEle('tbLND').style.display = 'none';
+    getEle('tbLND').innerHTML = '';
+    getEle('tbLNN').style.display = 'none';
+    getEle('tbLNN').innerHTML = '';
+    getEle('tbMT').style.display = 'none';
+    getEle('tbMT').innerHTML = '';
+}
 
 // Xử lí sự kiện nút thêm người dùng
 getEle('btnThemNguoiDung').addEventListener('click', btnThemNguoiDung)
