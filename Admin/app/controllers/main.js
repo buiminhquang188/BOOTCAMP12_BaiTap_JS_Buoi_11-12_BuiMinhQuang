@@ -134,6 +134,7 @@ var btnThemNguoiDung = function () {
 
 // Xử lí sự kiện đóng form
 function dongForm() {
+    document.getElementById('userForm').reset();
     document.querySelector('.close').click();
 }
 
@@ -166,14 +167,11 @@ function themUser() {
             alert(error);
         });
 
-    // Xoá dữ liệu cũ trong form
-    document.querySelectorAll('.form-group').reset();
 }
 
 // Validation form
 var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, loaiND, loaiNN, moTa) {
     var mangND = getLocalStorage();
-    console.log(mangND);
     // Tài khoản 
     isValid &= validator.kiemTraRong(taiKhoan, 'tbTK', '(*) Tài khoản không được để trống')
         && validator.kiemTraTrung(taiKhoan, 'tbTK', '(*) Tài khoản của bạn đã bị trùng, vui lòng nhập tài khoản khác', mangND);
@@ -189,12 +187,7 @@ var validation = function (isValid, taiKhoan, hoTen, matKhau, email, hinhAnh, lo
     isValid &= validator.kiemTraRong(loaiNN, 'tbLNN', '(*) Bạn phải chọn loại ngôn ngữ');
     isValid &= validator.kiemTraRong(moTa, 'tbMT', '(*) Bạn không được để trống phần này')
         && validator.kiemTraDoDai(moTa, 'tbMT', '(*) Độ dài không vượt quá 60 ký tự', 0, 60);
-    if (!isValid) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return isValid;
 }
 
 
