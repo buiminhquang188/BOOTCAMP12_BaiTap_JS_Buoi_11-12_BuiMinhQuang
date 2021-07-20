@@ -59,42 +59,42 @@
   }
 }
 
-@include responsive("extra-large") {
-  .carousel {
-    .carousel__content {
-      width: 100% !important;
-    }
-  }
-}
+// @include responsive("extra-large") {
+//   .carousel {
+//     .carousel__content {
+//       width: 100% !important;
+//     }
+//   }
+// }
 
-@include responsive("large") {
-  .carousel {
-    .carousel__content {
-      width: 100% !important;
-      flex-wrap: wrap;
-      .carousel__items {
-        width: 40%;
-      }
-    }
-  }
-}
+// @include responsive("large") {
+//   .carousel {
+//     .carousel__content {
+//       width: 100% !important;
+//       flex-wrap: wrap;
+//       .carousel__items {
+//         width: 40%;
+//       }
+//     }
+//   }
+// }
 
-@include responsive("medium") {
-  .carousel {
-    .carousel__content {
-      .carousel__items {
-        width: 40%;
-      }
-    }
-  }
-}
+// @include responsive("medium") {
+//   .carousel {
+//     .carousel__content {
+//       .carousel__items {
+//         width: 40%;
+//       }
+//     }
+//   }
+// }
 
-@include responsive("small") {
-  .carousel {
-    .carousel__content {
-      .carousel__items {
-        width: 100%;
-      }
-    }
-  }
-}
+// @include responsive("small") {
+//   .carousel {
+//     .carousel__content {
+//       .carousel__items {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }

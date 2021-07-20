@@ -25,7 +25,7 @@ function renderTeacher(mangGiaoVien) {
             return;
         }
         content += `
-        <div class="carousel__col col-3">
+        <div class="carousel__col col-xl-3 col-sm-6 col-12">
             <div class="carousel__items" style="margin-bottom: 2em">
                 <div class="carousel__text">
                     <div class="carousel__img">
